@@ -17,7 +17,7 @@ Ensure you have the following installed on your machine:
    Open your terminal and clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Philinzag/grossnetsalaryAPI
    cd flask_gross_net_salary
    ```
 
