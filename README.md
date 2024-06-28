@@ -18,7 +18,7 @@ Ensure you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/Philinzag/grossnetsalaryAPI
-   cd flask_gross_net_salary
+   cd grossnetsalaryAPI
    ```
 
 2. **Create a Virtual Environment**
@@ -91,7 +91,7 @@ Ensure you have the following installed on your machine:
 Here is a brief overview of the project structure:
 
 ```
-flask_gross_net_salary/
+grossnetsalaryAPI/
 ├── app.py                  # Main application file
 ├── models.py               # Data models
 ├── services.py             # Salary calculation logic
