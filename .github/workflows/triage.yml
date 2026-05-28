@@ -1,0 +1,40 @@
+name: Triage
+
+# Auto-add new issues + PRs to a GitHub Project (v2).
+#
+# Per-repo setup (one-time):
+#   1. Set repo variable `PROJECT_URL` to the Project URL
+#      (Settings → Secrets and variables → Actions → Variables → New repository variable)
+#      e.g. https://github.com/users/Philinzag/projects/3
+#   2. Set repo secret `PROJECT_TOKEN` to a fine-grained PAT with `project:write`
+#      and `repo` scopes (https://github.com/settings/tokens?type=beta)
+#   3. Both must be set — the `if:` gate skips the job otherwise so the
+#      workflow is non-blocking until configured.
+#
+# Why a PAT and not GITHUB_TOKEN?
+#   GitHub's built-in GITHUB_TOKEN can't write to user-scoped Projects v2.
+#   The `projects: write` workflow permission only exists for org Projects.
+
+on:
+  issues:
+    types: [opened, reopened]
+  pull_request:
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  add-to-project:
+    name: Add to Engineering tracker
+    runs-on: ubuntu-latest
+    # Per-repo opt-in: only runs once PROJECT_URL is configured.
+    if: ${{ vars.PROJECT_URL != '' }}
+    steps:
+      - name: Add to Project
+        uses: actions/add-to-project@v1
+        with:
+          project-url: ${{ vars.PROJECT_URL }}
+          github-token: ${{ secrets.PROJECT_TOKEN }}
