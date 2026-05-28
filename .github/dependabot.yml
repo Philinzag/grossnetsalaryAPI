@@ -1,0 +1,42 @@
+# Dependabot config — weekly grouped dep update PRs.
+#
+# Conventions:
+#   - Monday cadence so PRs stack into the week's review window
+#   - Grouped production vs development to keep PR count manageable
+#   - PRs get the `chore` label + Philinzag as assignee (matches our
+#     standardized intake — see also .github/ISSUE_TEMPLATE/)
+#   - GitHub Actions ecosystem also covered so action versions update
+#
+# To add a new ecosystem (e.g., docker, terraform), add another entry to
+# the `updates:` array — same shape as below.
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "chore"
+    assignees:
+      - "Philinzag"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+      actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "chore"
+    labels:
+      - "chore"
+    assignees:
+      - "Philinzag"
