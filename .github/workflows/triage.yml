@@ -8,8 +8,9 @@ name: Triage
 #   1. Set repo variable `PROJECT_URL` to the Project URL
 #      (Settings → Secrets and variables → Actions → Variables → New repository variable)
 #      e.g. https://github.com/users/Philinzag/projects/1
-#   2. Set repo secret `PROJECT_TOKEN` to a fine-grained PAT with `project:write`
-#      and `repo` scopes (https://github.com/settings/tokens?type=beta)
+#   2. Set repo secret `PROJECT_TOKEN` to a CLASSIC PAT with `repo` + `project`
+#      scopes (https://github.com/settings/tokens/new). Fine-grained PATs do
+#      NOT work — they have no permission scope for user-owned Projects v2.
 #   3. Both must be set — the `if:` gate skips the job otherwise so the
 #      workflow is non-blocking until configured.
 #
@@ -44,7 +45,7 @@ jobs:
     steps:
       - name: Add to Project
         id: add
-        uses: actions/add-to-project@v1
+        uses: actions/add-to-project@v2
         with:
           project-url: ${{ vars.PROJECT_URL }}
           github-token: ${{ secrets.PROJECT_TOKEN }}
