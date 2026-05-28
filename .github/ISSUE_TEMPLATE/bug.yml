@@ -1,0 +1,38 @@
+name: Bug report
+description: Something doesn't work the way it's supposed to.
+title: "bug: "
+labels: ["bug"]
+type: Bug
+assignees:
+  - Philinzag
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Concrete description — what you saw vs what you expected.
+      placeholder: "When I click X, I expect Y but Z happens instead."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to '...'
+        2. Click '...'
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Browser, OS, app version, anything relevant.
+      placeholder: "Chrome 132 on macOS 15.1, app v2.4"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Stack traces, console output, screenshots. Drag images directly into this box.
+      render: shell
