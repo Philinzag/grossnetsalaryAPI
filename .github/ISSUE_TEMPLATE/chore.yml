@@ -1,0 +1,19 @@
+name: Chore / Task
+description: Refactor, docs, dependency bump, cleanup, internal improvements.
+title: "chore: "
+labels: ["chore"]
+type: Task
+assignees:
+  - Philinzag
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs doing
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: Context — why now, what does it unblock?
