@@ -1,0 +1,36 @@
+name: Feature request
+description: New functionality or an improvement to existing functionality.
+title: "feat: "
+labels: ["enhancement"]
+type: Feature
+assignees:
+  - Philinzag
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What's the user pain or business need driving this?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What you think the right shape of the fix is. Not final — just a starting point.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you weighed and why you didn't pick them.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What does "done" look like? Specific, checkable.
+      placeholder: |
+        - [ ] X happens when Y
+        - [ ] Z is visible on /the/page
+        - [ ] No regression in <related-flow>
