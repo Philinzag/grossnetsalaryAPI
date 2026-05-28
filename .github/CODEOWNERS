@@ -1,0 +1,3 @@
+# CODEOWNERS — auto-requests review from listed owners on every PR.
+# Order matters: last matching pattern wins. See https://docs.github.com/articles/about-code-owners
+*                                @Philinzag
