@@ -6,6 +6,14 @@
 #   - PRs get the `chore` label + Philinzag as assignee (matches our
 #     standardized intake — see also .github/ISSUE_TEMPLATE/)
 #   - GitHub Actions ecosystem also covered so action versions update
+#   - Majors are ignored on every ecosystem. A breaking upgrade is a piece
+#     of work someone chooses to do — not a Monday-morning PR. Trade-off:
+#     this also suppresses a security update that needs a major, so if a
+#     CVE is only fixed in the next major, raise that bump by hand.
+#   - The `ignore` blocks are what actually excludes majors. A group's
+#     `update-types` only narrows what that group batches — an ungrouped
+#     major still opens its own PR, so don't drop `ignore` on the
+#     assumption the groups already cover it.
 #
 # To add a new ecosystem (e.g., docker, terraform), add another entry to
 # the `updates:` array — same shape as below.
@@ -17,6 +25,10 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -31,9 +43,17 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 3
+    groups:
       actions:
         patterns:
           - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     commit-message:
       prefix: "chore"
     labels:
